@@ -1,0 +1,9 @@
+version: '3.8'  # Use the desired version of Docker Compose (adjust if needed)
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Path to your Dockerfile
+    ports:
+      - "8000:8000"  # Map container's port 8010 to host's port 8010
