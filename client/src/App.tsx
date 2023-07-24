@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+
 
 import './App.css';
 
@@ -10,14 +12,9 @@ function App() {
         <p>
          Email Reminder
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Button variant="contained" color="primary">
+        Click Me
+      </Button>
       </header>
     </div>
   );
