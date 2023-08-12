@@ -14,3 +14,10 @@ services:
       dockerfile: client.Dockerfile  # Path to your client Dockerfile
     ports:
       - "3000:3000"  # Map container's port 3000 to host's port 3000
+
+  database:
+    build:
+      context: .
+      dockerfile: database.Dockerfile  # Path to your client Dockerfile
+    ports:
+      - "5432:5432"  # Map container's port 3000 to host's port 3000
