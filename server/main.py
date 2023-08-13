@@ -6,6 +6,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import jwt
 import datetime
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from migrations import models  # Import your SQLAlchemy models from your migrations or models file
 
@@ -20,6 +22,17 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
+origins = [
+    "http://localhost:3000",  # Update with your frontend URL
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class UserSignup(BaseModel):
     email: str
@@ -31,6 +44,8 @@ def create_access_token(data: dict, expires_delta: datetime.timedelta):
   to_encode.update({"exp": expire})
   encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
   return encoded_jwt
+
+  
 
 # Hash a password
 def hash_password(password: str):
